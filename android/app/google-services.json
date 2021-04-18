@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "79654759963",
+    "project_id": "joytechexample",
+    "storage_bucket": "joytechexample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79654759963:android:76f98f569d46121458d2be",
+        "android_client_info": {
+          "package_name": "com.example.bt5_backend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79654759963-8594maoc0hpvnpla732ikavtldlq7he4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ox-RvNn7g2mJ0F_s7rNksMmZMaog5ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79654759963-8594maoc0hpvnpla732ikavtldlq7he4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
