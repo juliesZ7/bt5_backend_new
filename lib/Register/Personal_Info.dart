@@ -1,3 +1,5 @@
+import 'package:bt5_backend/HomePage.dart';
+import 'package:bt5_backend/WelcomePage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -150,6 +152,10 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               .collection('UserData')
                               .doc('testUser')
                               .set(data);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WelcomePage()));
                         },
                         child: Text(
                           'Confirm',
