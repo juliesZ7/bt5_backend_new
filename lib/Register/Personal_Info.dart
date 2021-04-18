@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PersonalInfo extends StatefulWidget {
@@ -10,6 +11,16 @@ class _PersonalInfoState extends State<PersonalInfo> {
   TextEditingController address = TextEditingController();
   TextEditingController number = TextEditingController();
   DateTime pickedDate;
+  String dropDownValue;
+  List listDropDownItem = [
+    '+1 America',
+    '+7 Russian',
+    '+44 British',
+    '+84 Vietnam',
+    '+81 Japan',
+    '+86 China',
+    '+82 Korea'
+  ];
 
   @override
   void initState() {
@@ -66,16 +77,52 @@ class _PersonalInfoState extends State<PersonalInfo> {
               SizedBox(
                 height: 10,
               ),
-              ListTile(
-                title: Text(
-                  'Date: ${pickedDate.year}, ${pickedDate.month}, ${pickedDate.day}',
-                  style: TextStyle(color: Colors.white),
+              Container(
+                child: DropdownButton(
+                  hint: Text(
+                    'Select Dial',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  value: dropDownValue,
+                  onChanged: (newValue) {
+                    setState(() {
+                      dropDownValue = newValue;
+                    });
+                  },
+                  dropdownColor: Colors.grey[900],
+                  items: listDropDownItem.map((e) {
+                    return DropdownMenuItem(
+                      value: e,
+                      child: Text(
+                        e,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    );
+                  }).toList(),
                 ),
-                trailing: Icon(
-                  Icons.calendar_today,
-                  color: Colors.white,
+              ),
+              SizedBox(height: 15),
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Date of Birth:",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                    ListTile(
+                      title: Text(
+                        'Date: ${pickedDate.year}, ${pickedDate.month}, ${pickedDate.day}',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      trailing: Icon(
+                        Icons.calendar_today,
+                        color: Colors.white,
+                      ),
+                      onTap: _pickedDate,
+                    ),
+                  ],
                 ),
-                onTap: _pickedDate,
               ),
               SizedBox(
                 height: 20,
@@ -92,9 +139,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         borderRadius: BorderRadius.circular(50)),
                     child: TextButton(
                         onPressed: () {
-                          setState(() {
-                            
-                          });
+                          Map<String, dynamic> data = {
+                            'Name': name.text,
+                            'Address': address.text,
+                            'Phone Number': number.text,
+                            'Number Area': dropDownValue,
+                            'Date of Birth': pickedDate
+                          };
+                          FirebaseFirestore.instance
+                              .collection('UserData')
+                              .doc('testUser')
+                              .set(data);
                         },
                         child: Text(
                           'Confirm',
