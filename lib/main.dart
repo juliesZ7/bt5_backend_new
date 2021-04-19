@@ -2,6 +2,7 @@ import 'package:bt5_backend/Authetication_Services.dart';
 import 'package:bt5_backend/HomePage.dart';
 import 'package:bt5_backend/Register/Personal_Info.dart';
 import 'package:bt5_backend/WelcomePage.dart';
+import 'package:bt5_backend/testDateTime/testDateTime.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false, home: AuthenticationWrapper()));
+            debugShowCheckedModeBanner: false, home: TestDateTime()));
   }
 }
 
