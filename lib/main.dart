@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false, home: PersonalInfo()));
+            debugShowCheckedModeBanner: false, home: AuthenticationWrapper()));
   }
 }
 

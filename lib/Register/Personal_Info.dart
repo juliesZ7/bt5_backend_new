@@ -114,7 +114,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     ),
                     ListTile(
                       title: Text(
-                        'Date: ${pickedDate.year}, ${pickedDate.month}, ${pickedDate.day}',
+                        'Date: ${pickedDate.day}, ${pickedDate.month}, ${pickedDate.year}',
                         style: TextStyle(color: Colors.white),
                       ),
                       trailing: Icon(
