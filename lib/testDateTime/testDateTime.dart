@@ -24,32 +24,57 @@ class _TestDateTimeState extends State<TestDateTime> {
         title: Text('Test Date Time'),
       ),
       body: Container(
+          width: MediaQuery.of(context).size.width * 0.5,
           padding: EdgeInsets.only(top: 20),
           child: Center(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Date time 1',
-                style: TextStyle(color: Colors.white),
-              ),
-              TextFormField(
-                onTap: _pickDate1(),
-              ),
-              Text(
-                'Date time 2',
-                style: TextStyle(color: Colors.white),
-              ),
-              ListTile(
-                title: Text(
-                  'Date Time 2: ${dateTime2.day}/${dateTime2.month}/${dateTime2.year}',
-                  style: TextStyle(color: Colors.white),
+              Center(
+                child: SizedBox(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Date time 1',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      TextFormField(
+                        onTap: () {
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                          return _pickDate1();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                trailing: Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Colors.white,
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Date time 2',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      TextFormField(
+                        onTap: () {
+                          FocusScope.of(context).requestFocus(new FocusNode());
+                          return _pickDate2();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                onTap: _pickDate2,
+              ),
+              SizedBox(
+                height: 10,
               ),
               Text(
                 dateTime2.isAfter(dateTime1)
